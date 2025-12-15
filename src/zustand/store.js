@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 import {
   addEdge,
   applyNodeChanges,
@@ -20,7 +20,7 @@ export const useStore = create((set, get) => ({
   },
   addNode: (node) => {
     set({
-      nodes: [...get().nodes, node]
+      nodes: [...get().nodes, node],
     });
   },
   onNodesChange: (changes) => {
@@ -29,14 +29,22 @@ export const useStore = create((set, get) => ({
     });
   },
   onEdgesChange: (changes) => {
-    console.log("onEdgesChange",changes)
+    console.log('onEdgesChange', changes);
     set({
       edges: applyEdgeChanges(changes, get().edges),
     });
   },
   onConnect: (connection) => {
     set({
-      edges: addEdge({ ...connection, type: 'smoothstep', animated: true, markerEnd: { type: MarkerType.Arrow, height: '20px', width: '20px' } }, get().edges),
+      edges: addEdge(
+        {
+          ...connection,
+          type: 'smoothstep',
+          animated: true,
+          markerEnd: { type: MarkerType.Arrow, height: '20px', width: '20px' },
+        },
+        get().edges
+      ),
     });
   },
   updateNodeField: (nodeId, fieldName, fieldValue) => {
@@ -51,9 +59,9 @@ export const useStore = create((set, get) => ({
     });
   },
   removeNode: (nodeId) => {
-    const filteredNodes = get().nodes.filter(node => node.id !== nodeId);
+    const filteredNodes = get().nodes.filter((node) => node.id !== nodeId);
     const filteredEdges = get().edges.filter(
-      edge => edge.source !== nodeId && edge.target !== nodeId
+      (edge) => edge.source !== nodeId && edge.target !== nodeId
     );
     set({ nodes: filteredNodes, edges: filteredEdges });
   },

@@ -1,5 +1,4 @@
-
-export const Select = ({ value, options = [], onChange, className = "" }) => {
+export const Select = ({ value, options = [], onChange, className = '' }) => {
   return (
     <select
       value={value}

@@ -1,76 +1,94 @@
-import { FaSignInAlt, FaSignOutAlt, FaFont, FaBrain, FaDatabase, FaFile } from "react-icons/fa";
-import { MdSpeakerNotes, MdOutlineSupportAgent, MdExtension } from "react-icons/md";
-import { BaseNode } from "./components/BaseNode";
+import {
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaFont,
+  FaBrain,
+  FaDatabase,
+} from 'react-icons/fa';
+import { MdSpeakerNotes } from 'react-icons/md';
+import { BaseNode } from './components/BaseNode';
 
 export const nodeConfigs = {
   customInput: {
-    label: "Input",
-    type: "input",
+    label: 'Input',
+    type: 'input',
     icon: <FaSignInAlt />,
     fields: [
-      { name: "name", label: "Name", type: "text", default: "input_1" },
-      { name: "type", label: "Type", type: "select", options: ["Text", "File"], default: "Text" },
+      { name: 'name', label: 'Name', type: 'text', default: 'input_1' },
+      {
+        name: 'type',
+        label: 'Type',
+        type: 'select',
+        options: ['Text', 'File'],
+        default: 'Text',
+      },
     ],
-    handles: [{ type: "source", position: "Right", id: "{id}-value" }],
+    handles: [{ type: 'source', position: 'Right', id: '{id}-value' }],
   },
 
   llm: {
-    label: "LLM",
-    type: "llm",
+    label: 'LLM',
+    type: 'llm',
     icon: <FaBrain />,
     fields: [],
     handles: [
-      { type: "target", position: "Left", id: "system", style: { top: "33%" } },
-      { type: "target", position: "Left", id: "prompt", style: { top: "66%" } },
-      { type: "source", position: "Right", id: "response" },
+      { type: 'target', position: 'Left', id: 'system', style: { top: '33%' } },
+      { type: 'target', position: 'Left', id: 'prompt', style: { top: '66%' } },
+      { type: 'source', position: 'Right', id: 'response' },
     ],
   },
 
   customOutput: {
-    label: "Output",
-    type: "output",
+    label: 'Output',
+    type: 'output',
     icon: <FaSignOutAlt />,
     fields: [
-      { name: "name", label: "Name", type: "text", default: "output_1" },
-      { name: "type", label: "Type", type: "select", options: ["Text", "Image"], default: "Text" },
+      { name: 'name', label: 'Name', type: 'text', default: 'output_1' },
+      {
+        name: 'type',
+        label: 'Type',
+        type: 'select',
+        options: ['Text', 'Image'],
+        default: 'Text',
+      },
     ],
-    handles: [{ type: "target", position: "Left", id: "value" }],
+    handles: [{ type: 'target', position: 'Left', id: 'value' }],
   },
 
   text: {
-    label: "Text",
-    type: "text",
+    label: 'Text',
+    type: 'text',
     icon: <FaFont />,
     fields: [
-      { name: "name", label: "Name", type: "text", default: "text_1" },
-      { name: "text", label: "Text", type: "text", default: "" }
+      { name: 'name', label: 'Name', type: 'text', default: 'text_1' },
+      { name: 'text', label: 'Text', type: 'text', default: '' },
     ],
-    handles: [{ type: "source", position: "Right", id: "output" }],
+    handles: [{ type: 'source', position: 'Right', id: 'output' }],
   },
 
   database: {
-    label: "Database",
-    type: "database",
+    label: 'Database',
+    type: 'database',
     icon: <FaDatabase />,
-    fields: [
-      { name: "table", label: "Table", type: "text", default: "users" },
-    ],
-    handles: [
-      { type: "source", position: "Right", id: "rows" },
-    ],
+    fields: [{ name: 'table', label: 'Table', type: 'text', default: 'users' }],
+    handles: [{ type: 'source', position: 'Right', id: 'rows' }],
   },
 
   notes: {
-    label: "Notes",
-    type: "notes",
+    label: 'Notes',
+    type: 'notes',
     icon: <MdSpeakerNotes />,
     fields: [
       // { name: "name", label: "Name", type: "text", default: "text_1" },
-      { name: "textarea", label: "Enter Value", type: "textarea", default: "", rows: 8 }
+      {
+        name: 'textarea',
+        label: 'Enter Value',
+        type: 'textarea',
+        default: '',
+        rows: 8,
+      },
     ],
-    handles: [
-      { type: "target", position: "left", id: "rows" },
-    ],
+    handles: [{ type: 'target', position: 'left', id: 'rows' }],
   },
 
   // math: {
@@ -121,7 +139,6 @@ export const nodeConfigs = {
   //   ],
   // },
 
-
   // condition: {
   //   label: "Condition",
   //   icon: "⚖️",
@@ -140,7 +157,6 @@ export const nodeTypes = Object.keys(nodeConfigs).reduce((acc, key) => {
   acc[key] = (props) => <BaseNode {...props} config={nodeConfigs[key]} />;
   return acc;
 }, {});
-
 
 export const NODE_TYPES = Object.entries(nodeConfigs).map(([type, config]) => ({
   type,

@@ -1,4 +1,10 @@
-export const Input = ({ value, onChange, placeholder = "", className = "", type = "text" }) => {
+export const Input = ({
+  value,
+  onChange,
+  placeholder = '',
+  className = '',
+  type = 'text',
+}) => {
   return (
     <input
       type={type}
