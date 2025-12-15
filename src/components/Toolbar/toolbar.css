@@ -1,0 +1,28 @@
+.toolbar-content {
+  display: flex;
+  flex-wrap: nowrap; /* prevent wrapping */
+  gap: 12px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  overflow-x: auto;   /* enable horizontal scroll */
+  overflow-y: hidden; /* prevent vertical scroll */
+  white-space: nowrap; /* keep inline flow */
+  scrollbar-width: thin; /* Firefox */
+}
+
+.toolbar-content::-webkit-scrollbar {
+  height: 6px; /* small horizontal scrollbar */
+}
+
+.toolbar-content::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.toolbar-content::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
